@@ -6,23 +6,23 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 const devConfig = {
     mode: 'development',
     devServer: {
-        port: 8081,
+        port: 8083,
         historyApiFallback: {
             index: '/index.html'
         }
     },
     output: {
-        publicPath: 'http://localhost:8081/'
+        publicPath: 'http://localhost:8083/'
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html'
         }),
         new ModuleFederationPlugin({
-            name: 'marketing',
+            name: 'dashboard',
             filename: 'remoteEntry.js',
             exposes: {
-                './MarketingApp': './src/bootstrap'
+                './DashboardApp': './src/bootstrap'
             },
             shared: ['react', 'react-dom']
         })
